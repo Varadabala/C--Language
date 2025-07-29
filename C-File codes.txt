@@ -1,0 +1,707 @@
+1.Sum of Digits of a Number
+
+#include <stdio.h>
+
+int main() {
+    
+    int n,sum=0;
+    printf("Enter the Number:");
+    scanf("%d",&n);
+    printf("The sum of the digits of enetered number:");
+    while(n>0)
+    {
+        int result = n%10;
+        n = n/10;
+        sum=sum+result;
+    }
+    
+    printf("%d",sum);
+    return 0;
+}
+
+Enter the Number:123
+The sum of the digits of enetered number:6
+
+2.Reverse a Number
+
+#include <stdio.h>
+
+int main() {
+    
+    int n,sum=0;
+    printf("Enter the Number:");
+    scanf("%d",&n);
+    printf("The reversed of a given number:");
+    while(n>0)
+    {
+        int result = n%10;
+        n = n/10;
+        printf("%d",result);
+    }
+    return 0;
+}
+
+Enter the Number:123
+The reversed of a given number:321
+
+3.To check a number is palindrome or not
+
+#include <stdio.h>
+
+int main() {
+    
+    int n,result,reversed=0;
+    printf("Enter the number:");
+    scanf("%d",&n);
+    int temp=n;
+    printf("The reversed number is:");
+    while(n>0){
+      result = n%10;
+      reversed=reversed*10+result;
+      n = n/10;
+      printf("%d",result);
+    }
+    printf("\n");
+    if(reversed==temp)
+    {
+        printf("The number is palindrome");
+    }else{
+        printf("Not a Palindrome");
+    }
+    
+    return 0;
+    
+}
+
+Enter the number:17571
+The reversed number is:17571
+The number is palindrome
+
+4.string is palindrome or not
+
+#include <stdio.h>
+#include <string.h>
+
+void reverse(char *str)
+{
+    int len = strlen(str);
+    int start = 0;
+    int end = len-2;
+    
+   while(start<end){ 
+        char temp = str[start];
+        str[start]=str[end];
+        str[end]=temp;
+        start++;
+        end--;
+   }
+}
+
+int main() {
+    
+    char str[30],str1[30];
+    printf("Enter the String:");
+    fgets(str,sizeof(str),stdin);
+    strcpy(str1,str);
+    printf("The reversed string is:");
+    reverse(str);
+    printf("%s",str);
+    
+    if(strcmp(str1,str)==0)
+    {
+        printf("palindrome");
+    }
+    else
+    {
+        printf("not palindrome");
+    }
+    
+    return 0;
+}
+
+5.factorial of number using recursion
+
+#include <stdio.h>
+
+int fact(int n)
+{
+    if(n==0||n==1)
+    {
+        return 1;
+    }
+    
+    return n*fact(n-1);
+}
+
+int main()
+{
+    int num;
+    printf("Enter the number:");
+    scanf("%d",&num);
+    printf("The factorial of the number %d is:%d",num,fact(num));
+    return 0;
+}
+
+6.factorial of a number
+
+#include <stdio.h>
+
+int main()
+{
+    int n,i,fact=1;
+    printf("Enter the number:");
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+    {
+        fact=fact*i;
+    }
+    printf("The factorial of a %d is:%d",n,fact);
+    return 0;
+}
+
+7.printf the sum of the numbers in the range expect which are devisible by 5?
+
+#include<stdio.h>
+
+int main()
+{
+    int i,range;
+    int sum =0;
+    printf("Enter the Range:");
+    scanf("%d",&range);
+    printf("The numbers in the range except which are devisible by 5 is");
+    for(i=1;i<=range;i++)
+    {
+        if(i%5==0){
+            continue;
+        }
+         printf("%d ",i);
+         sum = sum+i;
+    }
+    
+    printf("the sum is:%d",sum);
+   
+    return 0;
+}
+
+Enter the Range:30
+The numbers in the range except which are devisible by 5 is1 2 3 4 6 7 8 9 11 12 13 14 16 17 18 19 21 22 23 24 26 27 28 29 the sum is:360
+
+8.Decimal to binary representation?
+
+#include<stdio.h>
+
+int main()
+{
+    int n,i=0,j;
+    printf("Enter the number:");
+    scanf("%d",&n);
+    int bin[32];
+    while(n>0)
+    {
+        bin[i]=n%2;
+        n=n/2;
+        i++;
+    }
+    
+    for(int j=i-1;j>=0;j--)
+    {
+        printf("%d",bin[j]);
+    }
+   
+    return 0;
+}
+
+9.set,clear,toggle
+
+#include<stdio.h>
+
+int main()
+{
+    int n,pos;
+    printf("Enter the number and position of bits:");
+    scanf("%d %d",&n,&pos);
+    printf("The binary representation of number n is:%b\n",n);
+    
+    n=n|(1<<pos);//set the bit
+    //n=n&~(1<<pos);//clear the bit
+    // n=n^1<<pos;
+    
+    printf("after setting:%d",n);
+    return 0;
+}
+
+10..Reverse a Hexadecimal Number......
+
+#include<stdio.h>
+
+unsigned char revnum(unsigned char num)
+{
+    return((num&0x0F)<<4)|((num&0xF0)>>4);
+}
+
+int main()
+{
+    unsigned char num;
+    printf("Enter the number:");
+    scanf("0x%x",&num);
+    unsigned char reversed = revnum(num);
+    printf("reversed is:0x%x",reversed);
+    return 0;
+}
+
+ouput:Enter the number:0x21
+      reversed is:0x12
+
+11..concatination of string.......
+
+#include<stdio.h>
+
+void strconcat(char *str1,char *str2)
+{
+    while(*str1 !='\0')
+    {
+        str1++;
+    }
+    while(*str2 !='\0')
+    {
+     *str1=*str2;
+      str1++;
+      str2++;
+    }
+    
+    *str1='\0';
+}
+
+int main()
+{
+   char str1[10]="hello ";
+   char str2[10]="world!";
+   strconcat(str1,str2);
+   printf("Concatenated String: %s\n", str1);
+    return 0;
+}
+
+output:Concatenated String: hello world!
+
+
+....................................................
+/////Factorial of a Given Numbers in the range/////
+
+#include<stdio.h>
+
+int fact(int n)
+{
+    if(n==0||n==1)
+    {
+        return 1;
+    }
+    return n*fact(n-1);
+}
+
+int main()
+{
+    int n;
+    printf("Enter the Number:");
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++)
+    {
+         printf("The factorial of %d is:%d",i,fact(i));
+         printf("\n");
+    }
+    return 0;
+}
+
+Enter the Number:7
+The factorial of 1 is:1
+The factorial of 2 is:2
+The factorial of 3 is:6
+The factorial of 4 is:24
+The factorial of 5 is:120
+The factorial of 6 is:720
+The factorial of 7 is:5040
+.................................
+.................................
+
+12....fibonaci series....
+
+#include<stdio.h>
+
+int fibonaci(int n)
+{
+    if(n==0)
+        return 0;
+    if(n==1)
+        return 1;
+    return fibonaci(n-1)+(n-2);
+}
+
+int main()
+{
+    int n,i;
+    printf("Enter the range:");
+    scanf("%d",&n);
+    printf("The fibonaci series of %d is:",n);
+    for(i=0;i<=n;i++)
+    {
+        printf("%d ",fibonaci(i));
+    }
+    return 0;
+}
+
+output:Enter the range:25
+The fibonaci series of 25 is:0 1 1 2 4 7 11 16 22 29 37 46 56 67 79 92 106 121 137 154 172 191 211 232 254 277 
+
+13........Common Elements from Two Input Arrays..........
+
+#include <stdio.h>
+
+void same_elements(int n,int arr1[],int o,int arr2[])
+{
+    printf("The common elements from both the arrays:");
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<o;j++)
+        {
+             if(arr1[i]==arr2[j])
+             {
+                 printf("%d ",arr1[i]);
+                 //break;
+             }
+        }
+    }
+    
+}
+
+int main() {
+   
+   int n;
+   printf("Enter the Size of the Array1:");
+   scanf("%d",&n);
+   int arr1[n];
+   printf("Enter the Elements in to the Array1:");
+   for(int i=0;i<n;i++)
+   {
+       scanf("%d",&arr1[i]);
+   }
+   
+   int o;
+   printf("Enter teh Size of the Array2:");
+   scanf("%d",&o);
+   int arr2[o];
+   printf("Enter the elements in to the Array2:");
+   for(int j=0;j<o;j++)
+   {
+       scanf("%d",&arr2[j]);
+   }
+   
+   same_elements(n,arr1,o,arr2);
+   
+    return 0;
+}
+
+output:
+Enter the Size of the Array1:5
+Enter the Elements in to the Array1:1 3 5 7 9
+Enter teh Size of the Array2:7
+Enter the elements in to the Array2:1 2 3 4 5 6 7
+The common elements from both the arrays:1 3 5 7 
+
+14.........Printing Alternative Chracter From the String...........
+
+#include <stdio.h>
+
+int main()
+{
+    char str[30];
+    printf("Enter the String:");
+    fgets(str,sizeof(str),stdin);
+    printf("The Alternative Chracter From The String:");
+    for(int i=0;str[i] != '\0';i+=2)
+    {
+        printf("%d",i);
+        printf("-");
+        printf("%c ",str[i]);
+    }
+    
+    return 0;
+}
+
+output:
+Enter the String:SbIaVlAaJvIaMrAdHhAaRnAgJ
+The Alternative Chracter From The String:
+0-S 
+2-I 
+4-V 
+6-A 
+8-J 
+10-I 
+12-M 
+14-A 
+16-H 
+18-A 
+20-R 
+22-A 
+24-J 
+
+15...To find the Largest,smallest and middle number in the array........
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+void sort(int n,int arr[])
+{
+    printf("Performing sorting to find smallest,largest and medium in the array!...\n");
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i-1;j++)
+        if(arr[j]>arr[j+1])
+        {
+            int temp = arr[j];
+            arr[j]=arr[j+1];
+            arr[j+1]=temp;
+        }
+    }
+    
+}
+
+int main() {
+    int n;
+    printf("Enter the requried size of array:");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter the Elements in to The Array:");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    
+    sort(n,arr);
+    printf("Elements After Sorting:");
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+    printf("The Smallest Number In the Array:%d\n",arr[0]);
+    printf("The 2nd Smallest Number In the Array:%d\n",arr[1]);
+    printf("The Middle Number In the Array  :%d\n",arr[n/2]);
+    printf("The Largest Number In the Array :%d\n",arr[n-1]);
+    printf("The 2nd Largest Number In the Array :%d\n",arr[n-2]);
+    return 0;
+}
+
+output:
+
+Enter the requried size of array:10
+Enter the Elements in to The Array:12 87 32 88 33 1 2 0 8 5
+Performing sorting to find smallest,largest and medium in the array!...
+Elements After Sorting:0 1 2 5 8 12 32 33 87 88 
+The Smallest Number In the Array:0
+The 2nd Smallest Number In the Array:1
+The Middle Number In the Array  :12
+The Largest Number In the Array :88
+The 2nd Largest Number In the Array :87
+
+
+16..................armstrong............
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include<math.h>
+int main() {
+    int n,result=0;
+    int arm=0;
+    printf("Enter the Number:");
+    scanf("%d",&n);
+    int temp=n;
+    
+    if(n<1000||n>9999)
+    {
+        printf("Enter the valid four digit number");
+        return 1;
+    }
+    
+    while(n>0)
+    {
+        result=n%10;
+        arm+=pow(result,4);
+        n=n/10;
+    }
+
+    if(arm==temp)
+    {
+        printf("ARMSTRONG!");
+    }
+    else
+    {
+        printf("NOT ARMSTRONG");
+    }
+    return 0;
+}
+
+output:
+
+Enter the Number:8208
+it is ARMSTRONG number!
+
+
+17.// Online C compiler to run C program online
+//CONVERTING DECIMAL TO BINARY AND PERFORMING SET,CLEAR,CHECK AND TOGGLE OPERATIONS ON THAT>>>>>>>
+#include <stdio.h>
+
+int print_binary(int n)
+{
+    int bin[32];
+    int i=0,j;
+    while(n>0)
+    {
+        bin[i]=n%2;
+        n=n/2;
+        i++;
+    }
+    
+    for(j=i-1;j>=0;j--)
+    {
+        printf("%d",bin[j]);
+    }
+    
+    printf("\n");
+}
+
+int main() {
+   int n,pos;
+   printf("Enter the Number:");
+   scanf("%d",&n);
+   printf("Converting into Binary:");
+   print_binary(n);
+   printf("\n");
+   printf("Enter the postition to set (or) clear (or) check (or) Toggle--:");
+   scanf("%d",&pos);
+   while(1)
+   {
+        int choice;
+        printf("Choose the Option:\n 1.set\n 2.clear\n 	3.check\n 4.Toggle\n Enter The Choice:");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1: if(choice==1)
+                    {
+                        n=n|(1<<pos);
+                        printf("After setting bit %d: ",pos);
+                        print_binary(n);
+                    }
+                    break;
+            case 2: if(choice==2)
+                    {
+                        n=n&~(1<<pos);
+                        print_binary(n);
+                    }
+                    break;
+            case 3: if(choice==3)
+                    {
+                       if (n & (1 << pos))
+                    printf("Bit %d is SET (1)\n", pos);
+                 else
+                    printf("Bit %d is CLEAR (0)\n", pos);
+                    }
+                    print_binary(n);
+                    break;
+            case 4: if(choice==4)
+                   {
+                       n=n^(1<<pos);
+                        print_binary(n);
+                   } 
+                   break;
+           default:printf("Invalid choice");
+        }
+    
+   }
+   return 0;
+}
+
+
+
+
+......Pattern Printing..................
+
+1)
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+ for(int i=1;i<=5;i++){
+     for(int j=1;j<=5;j++){
+         printf("*");
+     }
+     printf("\n");
+ }
+
+    return 0;
+}
+
+output:
+*****
+*****
+*****
+*****
+*****
+
+2)
+#include <stdio.h>
+
+int main() {
+ for(int i=1;i<=5;i++){
+     for(int j=1;j<=i;j++){
+         printf("*");
+     }
+     printf("\n");
+ }
+
+    return 0;
+}
+
+output:
+*
+**
+***
+****
+*****
+
+3)
+
+#include <stdio.h>
+
+int main() {
+ for(int i=1;i<=5;i++){
+     for(int j=5;j>=i;j--){
+         printf("*");
+     }
+     printf("\n");
+ }
+
+    return 0;
+}
+
+output:
+*****
+****
+***
+**
+*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
